@@ -70,6 +70,7 @@
 .logoTexto {
     font-family: niphlerFont;
     font-size: -webkit-xxx-large;
+    color: orange;
 }
 
 @media screen and (max-width: 767px) {

@@ -47,7 +47,9 @@ export class DetalleArticuloComponent implements OnInit {
         this.respuesta = JSON.parse(params['respuesta']);
       }
       
+      if(params['userEmail']!=null){
       this.idUser = JSON.parse(params['userEmail']);
+      }
       // console.log("USEREMAIL ES ",this.idUser);
       
       this.articulo = { 'idUser': this.idUser,

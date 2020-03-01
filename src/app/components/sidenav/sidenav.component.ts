@@ -110,6 +110,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
     this.loading=true;
     
+    this.child.limpiarStorage();
+    
     this.listaArticulos = await this.articulosservice.getArticulos(form.name.toString());
     this.articulos = this.listaArticulos[0];
     this.articulosAmazon = this.listaArticulos[1];
