@@ -8,9 +8,9 @@ import { NgForm } from '@angular/forms';
 
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
-import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+import {  GoogleLoginProvider } from "angularx-social-login";
 
-
+import { DataserviceService } from "../../services/dataservice.service";
 
 
 /** @title Responsive sidenav */
@@ -35,6 +35,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
   user: SocialUser= null;
   loggedIn: boolean;
   
+  message:string;
+
   //readonly URL_API = 'http://localhost:3000/api/articulos';
   readonly URL_API = 'https://niphlerscrappers.herokuapp.com/api/articulos';
 
@@ -43,7 +45,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   private _mobileQueryListener: () => void;
 
-  constructor(private authService: AuthService,private articulosservice : ArticulosService,changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(private data: DataserviceService,private authService: AuthService,private articulosservice : ArticulosService,changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -63,6 +65,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     this.hayInfoGuardada=false;
 
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    
   }
  
   signOut(): void {
@@ -72,6 +75,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
     this.listaArticulos=null;
 
     this.hayInfoGuardada=false;
+
+    this.data.changeMessage("no-user");
   }
 
 
@@ -81,13 +86,20 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
+    this.data.currentMessage.subscribe(message => this.message = message);
+
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
+      if(user!=null)
+      this.data.changeMessage(user.email);
      });
 
      this.hayInfoGuardada= localStorage.getItem("articulos")!=null;
 
+     
+
+     
   }
 
   async getArticulos(form: NgForm){

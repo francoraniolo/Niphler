@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { FavoritosService} from '../../services/favoritos.service';
+
+import { DataserviceService } from "../../services/dataservice.service";
 
 import { ToastrService } from 'ngx-toastr';
 
@@ -9,18 +11,35 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-favoritos',
   templateUrl: './favoritos.component.html',
   styleUrls: ['./favoritos.component.css']
+ 
 })
 export class FavoritosComponent implements OnInit {
 
   favoritos: Object[];
   idUser: string; 
+  loggedIn: boolean=false;
 
-  constructor(private toastr : ToastrService ,private router: ActivatedRoute,private favoritosService: FavoritosService) { }
+  message:string;
+
+  constructor(private data: DataserviceService,private toastr : ToastrService ,private router: ActivatedRoute,private favoritosService: FavoritosService) { }
 
   ngOnInit(): void {
+
+    this.data.currentMessage.subscribe(message => this.message = message);
+
     this.router.queryParams.subscribe(params =>{
       this.idUser = JSON.parse(params['idUser']);
+      
     });
+
+    if(this.message.localeCompare(this.idUser)==0){
+      this.loggedIn=true;
+    }
+
+    
+     
+    if(this.loggedIn){
+    
     this.favoritosService.getFavoritos(this.idUser).snapshotChanges().subscribe(item=>{
       this.favoritos = [];
       item.forEach(element =>{
@@ -29,7 +48,7 @@ export class FavoritosComponent implements OnInit {
         this.favoritos.push(x as Object);
       })
     });
-
+  }
   }
 
   deleteFavorito($key:string){
