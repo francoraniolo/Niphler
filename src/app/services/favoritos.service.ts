@@ -38,7 +38,7 @@ export class FavoritosService {
 
     });
     }else{
-    console.log("No se pudo agregar a favoritos: usuario nulo");
+    // console.log("No se pudo agregar a favoritos: usuario nulo");
          }
   }
 

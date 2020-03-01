@@ -1079,10 +1079,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 _this.suma = _this.suma + articulo['precio'];
               });
               this.cantidadItems = this.articulos.length + this.articulosAmazon.length + this.articulosEbay.length;
-              this.precioPromedio = this.suma / (this.cantidadItems - this.cantidadARestar);
-              console.log("PRECIO PROMEDIO", this.precioPromedio);
-              console.log("CANTIDAD ITEMS", this.cantidadItems - this.cantidadARestar);
-              console.log("SUMA", this.suma);
+              this.precioPromedio = this.suma / (this.cantidadItems - this.cantidadARestar); //  console.log("PRECIO PROMEDIO",this.precioPromedio);
+              //  console.log("CANTIDAD ITEMS",this.cantidadItems-this.cantidadARestar);
+              //  console.log("SUMA",this.suma);
+
               this.suma = 0;
               this.cantidadARestar = 0;
               localStorage.setItem("articulos", JSON.stringify(this.articulos));
@@ -1695,8 +1695,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               _this2.respuesta = JSON.parse(params['respuesta']);
             }
 
-            _this2.idUser = JSON.parse(params['userEmail']);
-            console.log("USEREMAIL ES ", _this2.idUser);
+            _this2.idUser = JSON.parse(params['userEmail']); // console.log("USEREMAIL ES ",this.idUser);
+
             _this2.articulo = {
               'idUser': _this2.idUser,
               'titulo': _this2.titulo,
@@ -2584,9 +2584,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 2:
                     this.articulos = _context2.sent;
-                    console.log(form.name.toString());
 
-                  case 4:
+                  case 3:
                   case "end":
                     return _context2.stop();
                 }
@@ -3170,25 +3169,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               while (1) {
                 switch (_context3.prev = _context3.next) {
                   case 0:
-                    console.log("form name", form.name.toString());
-
                     if (!(form.name.toString().localeCompare('') != 0)) {
-                      _context3.next = 10;
+                      _context3.next = 9;
                       break;
                     }
 
                     this.loading = true;
-                    _context3.next = 5;
+                    _context3.next = 4;
                     return this.articulosservice.getArticulos(form.name.toString());
 
-                  case 5:
+                  case 4:
                     this.listaArticulos = _context3.sent;
                     this.articulos = this.listaArticulos[0];
                     this.articulosAmazon = this.listaArticulos[1];
                     this.articulosEbay = this.listaArticulos[2];
                     this.loading = false;
 
-                  case 10:
+                  case 9:
                   case "end":
                     return _context3.stop();
                 }
@@ -4079,8 +4076,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               url: favorito['url'],
               ecommerce: favorito['ecommerce']
             });
-          } else {
-            console.log("No se pudo agregar a favoritos: usuario nulo");
+          } else {// console.log("No se pudo agregar a favoritos: usuario nulo");
           }
         }
       }, {

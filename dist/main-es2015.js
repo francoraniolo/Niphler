@@ -613,9 +613,9 @@ class ArticulosComponent {
                 });
                 this.cantidadItems = this.articulos.length + this.articulosAmazon.length + this.articulosEbay.length;
                 this.precioPromedio = this.suma / (this.cantidadItems - this.cantidadARestar);
-                console.log("PRECIO PROMEDIO", this.precioPromedio);
-                console.log("CANTIDAD ITEMS", this.cantidadItems - this.cantidadARestar);
-                console.log("SUMA", this.suma);
+                //  console.log("PRECIO PROMEDIO",this.precioPromedio);
+                //  console.log("CANTIDAD ITEMS",this.cantidadItems-this.cantidadARestar);
+                //  console.log("SUMA",this.suma);
                 this.suma = 0;
                 this.cantidadARestar = 0;
                 localStorage.setItem("articulos", JSON.stringify(this.articulos));
@@ -932,7 +932,7 @@ class DetalleArticuloComponent {
                 this.respuesta = JSON.parse(params['respuesta']);
             }
             this.idUser = JSON.parse(params['userEmail']);
-            console.log("USEREMAIL ES ", this.idUser);
+            // console.log("USEREMAIL ES ",this.idUser);
             this.articulo = { 'idUser': this.idUser,
                 'titulo': this.titulo,
                 'precio': this.precio,
@@ -1346,7 +1346,7 @@ class NavbarComponent {
     getArticulos(form) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             this.articulos = yield this.articulosservice.getArticulos(form.name.toString());
-            console.log(form.name.toString());
+            //  console.log(form.name.toString())
         });
     }
 }
@@ -1605,7 +1605,7 @@ class SidenavComponent {
     }
     getArticulos(form) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            console.log("form name", form.name.toString());
+            // console.log("form name",form.name.toString());
             if (form.name.toString().localeCompare('') != 0) {
                 this.loading = true;
                 this.listaArticulos = yield this.articulosservice.getArticulos(form.name.toString());
@@ -2017,7 +2017,7 @@ class FavoritosService {
             });
         }
         else {
-            console.log("No se pudo agregar a favoritos: usuario nulo");
+            // console.log("No se pudo agregar a favoritos: usuario nulo");
         }
     }
     deleteFavorito(titulo) {
