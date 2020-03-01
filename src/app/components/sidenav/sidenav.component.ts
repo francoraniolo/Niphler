@@ -104,6 +104,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   async getArticulos(form: NgForm){
 
+    console.log("form name",form.name.toString());
+
     if(form.name.toString().localeCompare('')!=0){
 
     this.loading=true;
