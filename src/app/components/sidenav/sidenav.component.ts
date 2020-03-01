@@ -92,6 +92,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   async getArticulos(form: NgForm){
 
+    if(form.name.toString().localeCompare('')!=0){
+
     this.loading=true;
     
     this.listaArticulos = await this.articulosservice.getArticulos(form.name.toString());
@@ -100,6 +102,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     this.articulosEbay = this.listaArticulos[2];
 
     this.loading=false;
+    }
 
    }
 

@@ -8,7 +8,7 @@
             <div style="max-width: fit-content;">
 
                 <form #articuloForm="ngForm" (ngSubmit)="getArticulos(articuloForm.value)" class="form-inline active-cyan-4 clearfix buscadorForm">
-                    <input class="form-control form-control-md mr-3 w-120" type="text" name="name" placeholder="Busca productos..." aria-label="Search" ngModel>
+                    <input class="form-control form-control-md mr-3 w-120" type="text" name="name" placeholder="Busca productos..." aria-label="Search" ngModel required>
                     <button class="btn btn-warning btnBusqueda" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>
 
