@@ -1,0 +1,120 @@
+    .mat-card-actions {
+        margin-top: 12%;
+    }
+    
+    .mat-card-header .mat-card-title {
+        height: 10vh;
+        width: 20ch;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .example-card {
+        display: block;
+        padding: 7% 0;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+        max-width: 50vw;
+        height: 78vh;
+        margin-top: 0.5vw;
+        margin-bottom: 0.5vw;
+    }
+    
+    .example-card:hover {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+    
+    .columna {
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+    }
+    
+    .contenedorImagen {
+        height: 40vh;
+    }
+    
+    .img_articulo {
+        height: 45vh;
+        width: 100%;
+        margin-left: 0vh;
+        margin-right: 0vh;
+    }
+    /*
+    LEFT EN REALIDAD ES CENTER Y CENTER ES LEFT;
+    */
+    
+    .column-left {
+        float: left;
+        width: 32%;
+        margin-left: 0.5vw;
+        margin-right: 0.5vw;
+    }
+    
+    .column-center {
+        float: left;
+        width: 32%;
+    }
+    
+    .column-right {
+        /* display: inline-block; */
+        display: inline-table;
+        width: 32%;
+    }
+    
+    .precio {
+        margin-left: 9%;
+        float: left;
+        text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
+    }
+    
+    .goodPrice {
+        color: #4CFE30;
+    }
+    
+    .btn-success {
+        margin-right: 1vw;
+    }
+    
+    @media screen and (max-width: 767px) {
+        .column-left,
+        .column-center,
+        .column-right {
+            width: 100%;
+            float: none;
+            margin: 1;
+        }
+        .mat-card {
+            margin-top: 2vh;
+        }
+        .example-card {
+            height: 50vh;
+            width: auto;
+        }
+        .mat-card-header .mat-card-title {
+            height: 7vh;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 35vw;
+        }
+        .contenedorImagen {
+            height: 25vh;
+        }
+        .img_articulo {
+            height: 25vh;
+            width: 100%;
+            margin-left: 0vh;
+            margin-right: 0vh;
+        }
+        .mat-card-actions {
+            margin-top: 5%;
+        }
+        .btn-success {
+            margin-right: 4vw;
+            position: relative;
+            bottom: 3vh;
+        }
+        .precio {
+            font-size: 2.6vh;
+        }
+    }

@@ -1,0 +1,177 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar class="example-toolbar">
+        <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+        <div class="logoContenedor">
+            <h1 [routerLink]="['/']" routerLinkActive="router-link-active" class="example-app-name logoTexto"> <img class="logoPagina" src="assets/Niphler.png"> Niphler </h1>
+        </div>
+        <div class="clearfix" style="max-width: max-content; margin-left: 3%;">
+            <div style="max-width: fit-content;">
+
+                <form #articuloForm="ngForm" (ngSubmit)="getArticulos(articuloForm.value)" class="form-inline active-cyan-4 clearfix buscadorForm">
+                    <input class="form-control form-control-md mr-3 w-120" type="text" name="name" placeholder="Busca productos..." aria-label="Search" ngModel>
+                    <button class="btn btn-warning btnBusqueda" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </form>
+
+
+            </div>
+
+        </div>
+
+
+        <img *ngIf="user" src="{{ user.photoUrl }}" alt="Avatar" class="avatar botonEscritorio">
+        <div *ngIf="user">
+            <nav>
+                <a [routerLink]="['/favoritos']" [queryParams]="{idUser: user.email | json  
+                                                                           }"><button class="btn btn-primary botonFavorito botonEscritorio"><i class="fa fa-star" style="color:goldenrod" aria-hidden="true"></i> Favoritos</button></a>
+            </nav>
+        </div>
+        <button *ngIf="user" class="btn btn-danger botonEscritorio" (click)="signOut()">
+            <i class="fa fa-sign-out"></i> Cerrar Sesión
+        </button>
+
+        <button *ngIf="!user" class="btn btn-danger botonEscritorio btnInicioSesion" (click)="signInWithGoogle()">
+            <i class="fa fa-google"></i>
+            Iniciar Sesión
+        </button>
+
+
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <mat-nav-list>
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+
+                            <mat-panel-title>
+                                <img class="rounded" src="assets/iconos/MercadolibreIcono.jpeg">
+                            </mat-panel-title>
+
+                            <mat-panel-description>
+                                <p class="filterText" style="font-weight: bold; color:#DFD019">Mercadolibre</p>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <mat-form-field>
+                            <input style="visibility: hidden;" matInput>
+                            <button class="btn btn-success" (click)="orderPriceDownMercadoLibre()"><i class="fa fa-arrow-circle-down"></i> $</button>
+                            <button class="btn btn-success btnFiltro" (click)="orderPriceUpMercadoLibre()"><i class="fa fa-arrow-circle-up"></i> $</button>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input style="visibility: hidden;" matInput>
+                            <button class="btn btn-warning" (click)="orderNameMercadoLibre()"><i class="fa fa-arrow-circle-down"></i> A-Z</button>
+                            <button class="btn btn-warning btnFiltro" (click)="orderNameUpMercadoLibre()"><i class="fa fa-arrow-circle-up"></i> A-Z</button>
+                        </mat-form-field>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <img class="rounded" src="assets/iconos/amazonIcono.png">
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                <p class="filterText amazonFont" style="font-weight: bold; color:#F6900E">amazon</p>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <mat-form-field>
+                            <input style="visibility: hidden;" matInput>
+                            <button class="btn btn-success" (click)="orderPriceDownAmazon()"><i class="fa fa-arrow-circle-down"></i> $</button>
+                            <button class="btn btn-success btnFiltro" (click)="orderPriceUpAmazon()"><i class="fa fa-arrow-circle-up"></i> $</button>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input style="visibility: hidden;" matInput>
+                            <button class="btn btn-warning" (click)="orderNameAmazon()"><i class="fa fa-arrow-circle-down"></i> A-Z</button>
+                            <button class="btn btn-warning btnFiltro" (click)="orderNameUpAmazon()"><i class="fa fa-arrow-circle-up"></i> A-Z</button>
+                        </mat-form-field>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <img class="rounded" src="assets/iconos/ebayIcono.png">
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                <p class="filterText" style="font-weight: bold; color:red">E</p>
+                                <p class="filterText" style="font-weight: bold; color:blue">b</p>
+                                <p class="filterText" style="font-weight: bold; color:goldenrod">a</p>
+                                <p class="filterText" style="font-weight: bold; color:#4BDA1D">y</p>
+
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <mat-form-field>
+                            <input style="visibility: hidden;" matInput>
+                            <button class="btn btn-success" (click)="orderPriceDownEbay()"><i class="fa fa-arrow-circle-down"></i> $</button>
+                            <button class="btn btn-success btnFiltro" (click)="orderPriceUpEbay()"><i class="fa fa-arrow-circle-up"></i> $</button>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input style="visibility: hidden;" matInput>
+                            <button class="btn btn-warning" (click)="orderNameEbay()"><i class="fa fa-arrow-circle-down"></i> A-Z</button>
+                            <button class="btn btn-warning btnFiltro" (click)="orderNameUpEbay()"><i class="fa fa-arrow-circle-up"></i> A-Z</button>
+                        </mat-form-field>
+                    </mat-expansion-panel>
+
+
+                </mat-accordion>
+
+                <div class="botonesMobile">
+                    <button *ngIf="!user" class="btn btn-danger " (click)="signInWithGoogle()">
+                        <i class="fa fa-google"></i>
+                        Iniciar Sesión
+                    </button>
+
+                    <img *ngIf="user" src="{{ user.photoUrl }}" alt="Avatar" class="avatar">
+
+                    <br>
+                    <br>
+
+                    <div *ngIf="user">
+                        <nav>
+                            <a [routerLink]="['/favoritos']" [queryParams]="{idUser: user.email | json  
+                                                                                   }"><button class="btn btn-primary botonFavorito "><i class="fa fa-star" style="color:goldenrod" aria-hidden="true"></i> Favoritos</button></a>
+                        </nav>
+                    </div>
+                    <br>
+                    <br>
+
+
+                    <button *ngIf="user" class="btn btn-danger " (click)="signOut()">
+                        <i class="fa fa-sign-out"></i> Cerrar Sesión
+                    </button>
+                </div>
+            </mat-nav-list>
+
+
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+
+            <app-carousel *ngIf="!listaArticulos && !loading && !hayInfoGuardada "></app-carousel>
+
+            <div *ngIf="loading" class="loading-spinner cssload-container">
+
+                <div style="margin-top: 5vh;" class="cssload-whirlpool">
+                </div>
+
+            </div>
+
+
+
+            <div *ngIf="user">
+                <app-articulos [ngClass]="{'esconder': loading}" [articulos]="articulos" [articulosAmazon]="articulosAmazon" [articulosEbay]="articulosEbay" [userEmail]="user.email"></app-articulos>
+            </div>
+
+            <div *ngIf="!user">
+                <app-articulos [ngClass]="{'esconder': loading}" [articulos]="articulos" [articulosAmazon]="articulosAmazon" [articulosEbay]="articulosEbay"></app-articulos>
+            </div>
+
+
+
+            <app-footer></app-footer>
+
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+
+</div>

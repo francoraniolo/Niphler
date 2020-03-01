@@ -1,0 +1,230 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.example-is-mobile .example-toolbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+}
+
+h1.example-app-name {
+    margin-left: 8px;
+}
+
+.example-sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+}
+
+.example-is-mobile .example-sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+}
+
+.w-120 {
+    width: 40vw;
+}
+
+.mat-sidenav {
+    width: 30%;
+}
+
+.buscadorForm {
+    width: max-content;
+}
+
+.btnBusqueda {
+    margin-right: 3vw;
+}
+
+.btn-danger {
+    margin-right: 3vw;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.botonFavorito {
+    margin-right: 2vw;
+    font-weight: 500;
+}
+
+.rounded {
+    width: 3.7vw;
+    height: 7vh;
+}
+
+.filterText {
+    margin-top: auto;
+    font-size: x-large;
+    text-shadow: -1px 0 black, 0 3px black, 2px 0 black, 0 -1px black;
+    ;
+}
+
+.btnFiltro {
+    margin-left: 3vw;
+}
+
+.btnInicioSesion {
+    background-color: darkred;
+    border-color: orangered;
+}
+
+.logoPagina {
+    height: 6vh;
+    width: auto;
+    cursor: pointer;
+}
+
+.loading-spinner {
+    margin-bottom: 40vh;
+    margin-top: 10vh;
+}
+
+@font-face {
+    font-family: niphlerFont;
+    src: url('../../../assets/fonts/StoryBook-KpgA.ttf');
+}
+
+.logoTexto {
+    font-family: niphlerFont;
+    font-size: -webkit-xxx-large;
+    color: orange;
+}
+
+@font-face {
+    font-family: amazonFontText;
+    src: url('../../../assets/fonts/amazonFont.otf');
+}
+
+.amazonFont {
+    font-family: amazonFontText;
+}
+
+.botonesMobile {
+    visibility: hidden;
+}
+
+@media screen and (max-width: 767px) {
+    .mat-sidenav {
+        width: 95%;
+    }
+    .logoTexto {
+        font-size: x-small;
+    }
+    .botonesMobile {
+        visibility: visible;
+        margin-top: 5vh;
+        margin-left: 5vh;
+    }
+    .botonEscritorio {
+        visibility: hidden;
+    }
+    .rounded {
+        width: 9.7vw;
+    }
+}
+
+
+/*-------------- loading gif ----------------- */
+
+.cssload-container {
+    position: relative;
+}
+
+.cssload-whirlpool,
+.cssload-whirlpool::before,
+.cssload-whirlpool::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 2px solid rgb(204, 204, 204);
+    border-left-color: rgb(0, 0, 0);
+    border-radius: 2373px;
+    -o-border-radius: 2373px;
+    -ms-border-radius: 2373px;
+    -webkit-border-radius: 2373px;
+    -moz-border-radius: 2373px;
+}
+
+.cssload-whirlpool {
+    margin: -59px 0 0 -59px;
+    height: 119px;
+    width: 119px;
+    animation: cssload-rotate 1900ms linear infinite;
+    -o-animation: cssload-rotate 1900ms linear infinite;
+    -ms-animation: cssload-rotate 1900ms linear infinite;
+    -webkit-animation: cssload-rotate 1900ms linear infinite;
+    -moz-animation: cssload-rotate 1900ms linear infinite;
+}
+
+.cssload-whirlpool::before {
+    content: "";
+    margin: -55px 0 0 -55px;
+    height: 105px;
+    width: 105px;
+    animation: cssload-rotate 1900ms linear infinite;
+    -o-animation: cssload-rotate 1900ms linear infinite;
+    -ms-animation: cssload-rotate 1900ms linear infinite;
+    -webkit-animation: cssload-rotate 1900ms linear infinite;
+    -moz-animation: cssload-rotate 1900ms linear infinite;
+}
+
+.cssload-whirlpool::after {
+    content: "";
+    margin: -69px 0 0 -69px;
+    height: 133px;
+    width: 133px;
+    animation: cssload-rotate 3800ms linear infinite;
+    -o-animation: cssload-rotate 3800ms linear infinite;
+    -ms-animation: cssload-rotate 3800ms linear infinite;
+    -webkit-animation: cssload-rotate 3800ms linear infinite;
+    -moz-animation: cssload-rotate 3800ms linear infinite;
+}
+
+@keyframes cssload-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes cssload-rotate {
+    100% {
+        -o-transform: rotate(360deg);
+    }
+}
+
+@-ms-keyframes cssload-rotate {
+    100% {
+        -ms-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes cssload-rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes cssload-rotate {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+.esconder {
+    visibility: hidden;
+}

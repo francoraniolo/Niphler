@@ -1,0 +1,63 @@
+<mat-toolbar class="example-toolbar">
+
+    <h1 [routerLink]="['/']" routerLinkActive="router-link-active" class="example-app-name logoTexto"> <img class="logoPagina" src="assets/Niphler.png"> Niphler </h1>
+    <div class="clearfix" style="max-width: max-content; margin-left: 3%;">
+        <div style="max-width: fit-content;">
+
+        </div>
+
+    </div>
+
+</mat-toolbar>
+
+
+<div class="container" style="display: flex;">
+
+    <div class="row">
+        <div class="col">
+
+            <a [href]=url target="_blank">
+                <img [src]="imagen" style="display: block;  border: 2px solid ;
+            border-radius: 12px;" class="rounded float-left img-fluid" alt="Imagen de Articulo">
+
+            </a>
+
+        </div>
+
+        <div class="col">
+            <div class="descripcion">
+                <h1 class="display-3 titulo" style="margin: 3%; font-weight: bold;">{{titulo}}</h1>
+
+                <h1 class="display-1 precio" style="margin: 3%">{{precio}} </h1>
+                <h2 style="    position: relative;
+            left: 12vw;
+            font-weight: normal;">+ Envío</h2>
+
+                <h2>Articulo proveniente de {{ecommerce}}</h2>
+
+                <h1 class="display-2 stock" style="color:forestgreen; font-weight: bold;" *ngIf="stock">En Stock.</h1>
+                <h1 class="display-2 stock" style="color:maroon" *ngIf="!stock">Consultar stock.</h1>
+                <h2 class="display-2 stock" *ngIf="!stock && ecommerce=='Mercadolibre'">
+                    No se ha confirmado el stock desde hace más de dos semanas
+                </h2>
+
+                <button type="button" class="btn btn-primary" (click)="addFavorite()">Agregar a favoritos</button>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+<hr>
+
+<div class="alert alert-success" role="alert" style="margin:8%;
+border-radius: 12px;" *ngIf="stock &&  ecommerce=='Mercadolibre'">
+    <h2 class="display-2 alert-heading">El vendedor a respondido el {{fecha}} lo siguiente:</h2>
+    <hr>
+    <p style=" 
+        border-radius: 12px; font-style: italic; font-size:1.1rem;">"{{respuesta}}"</p>
+</div>
+
+<app-footer></app-footer>
