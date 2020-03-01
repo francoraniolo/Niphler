@@ -3170,23 +3170,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               while (1) {
                 switch (_context3.prev = _context3.next) {
                   case 0:
+                    console.log("form name", form.name.toString());
+
                     if (!(form.name.toString().localeCompare('') != 0)) {
-                      _context3.next = 9;
+                      _context3.next = 10;
                       break;
                     }
 
                     this.loading = true;
-                    _context3.next = 4;
+                    _context3.next = 5;
                     return this.articulosservice.getArticulos(form.name.toString());
 
-                  case 4:
+                  case 5:
                     this.listaArticulos = _context3.sent;
                     this.articulos = this.listaArticulos[0];
                     this.articulosAmazon = this.listaArticulos[1];
                     this.articulosEbay = this.listaArticulos[2];
                     this.loading = false;
 
-                  case 9:
+                  case 10:
                   case "end":
                     return _context3.stop();
                 }

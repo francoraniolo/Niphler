@@ -1605,6 +1605,7 @@ class SidenavComponent {
     }
     getArticulos(form) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            console.log("form name", form.name.toString());
             if (form.name.toString().localeCompare('') != 0) {
                 this.loading = true;
                 this.listaArticulos = yield this.articulosservice.getArticulos(form.name.toString());
