@@ -15,6 +15,13 @@
 
 <div class="container">
     <h1 class="lista-title"> Tu Lista de Favoritos</h1>
+
+    <div class="alert alert-danger" *ngIf="!loggedIn">
+        <h1 style="font-weight: bold;">Vaya, vaya... creo que has intentado visitar favoritos sin iniciar sesión. ¿Puede ser?</h1>
+        <h2 style="font-style: italic;">"¿Te atreves a usar mis propios hechizos contra mi, Potter?"</h2>
+
+        <img src="https://i.pinimg.com/originals/a9/4c/54/a94c545248cd395f5fd95a6b26f4370f.png" alt="">
+    </div>
     <hr>
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 columna" *ngFor="let articulo of favoritos; index as i;">
